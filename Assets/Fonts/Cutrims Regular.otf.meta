@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 71536052e32d96246b928501bd01a1d9
+timeCreated: 1493611422
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Cutrims
+  fontNames:
+  - Cutrims
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
