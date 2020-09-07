@@ -1,2 +1,3 @@
 # Slopes
- A game I made in HS and publishes to Google Play
+ A game I made in HS and published to Google Play
+Built in Unity
