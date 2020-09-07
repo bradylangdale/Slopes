@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 
@@ -12,11 +13,13 @@ public class PlayerController : MonoBehaviour {
     public GameObject[] objectsFabs;
     public Scorer scoreboard;
     private float offset;
+    private Vector3 startRot;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         CenterGyro();
+        startRot = transform.rotation.eulerAngles;
     }
 
     public void Pause()
@@ -44,17 +47,18 @@ public class PlayerController : MonoBehaviour {
         }
 
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
-        if (rb.velocity.z < 30) rb.AddRelativeForce((Vector3.up * 2f));
+        if (rb.velocity.z < 30) rb.AddRelativeForce((Vector3.back * 2f));
         rb.velocity = new Vector3(Mathf.Lerp(rb.velocity.x, 0, 0.01f), rb.velocity.y, rb.velocity.z);
         ground();
         center();
 
+        rb.velocity += new Vector3(Input.GetAxis("Horizontal"), 0, 0);
         rb.velocity += new Vector3((Input.acceleration.x + offset) / 2f, 0, 0);
     }
 
     private void center()
     {
-        Vector3 rot = new Vector3(-90, 90, 90);
+        Vector3 rot = startRot;
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(rot), 0.2f);
         transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + ((Input.acceleration.x + offset) * 8), transform.rotation.eulerAngles.z));
     }
