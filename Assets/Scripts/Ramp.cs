@@ -5,9 +5,12 @@ public class Ramp : MonoBehaviour {
     private void Start()
     {
         RaycastHit hit;
-        Physics.Raycast(transform.parent.gameObject.transform.position, Vector3.down, out hit);
-        if (hit.point.y != 0) transform.parent.gameObject.transform.position = hit.point;
-        else Destroy(gameObject);
+        if (Physics.Raycast(transform.position, Vector3.down, out hit))
+            transform.position = hit.point;
+        else
+            Destroy(gameObject);
+
+        if (hit.point.y > 0.5) Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
